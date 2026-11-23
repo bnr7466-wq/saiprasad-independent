@@ -22,7 +22,7 @@ const SLOGANS = {
 
 const THEMES = {
   classic: { c1: "#065f46", c2: "#10b981", bar: "#064e3b", accent: "#facc15", text: "#ffffff" }, // Emerald & Bright Green
-  flag:    { c1: "#15803d", c2: "#22c55e", bar: "#14532d", accent: "#ffffff", text: "#ffffff", split: true }, // Vibrant Leaf Split
+  flag:    { c1: "#15803d", c2: "#22c55e", bar: "#14532d", accent: "#ffffff", text: "#ffffff" }, // Vibrant Leaf Split
   sunrise: { c1: "#166534", c2: "#65a30d", bar: "#052e16", accent: "#fef08a", text: "#ffffff" }, // Forest to Lime Gradient
   gold:    { c1: "#022c22", c2: "#047857", bar: "#011c16", accent: "#fbbf24", text: "#ffffff" }, // Dark Pine & Gold
   wave:    { c1: "#115e59", c2: "#0d9488", bar: "#134e4a", accent: "#fde047", text: "#ffffff" }  // Deep Teal & Sea Green
