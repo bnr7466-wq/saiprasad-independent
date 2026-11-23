@@ -1,7 +1,7 @@
 // --- CONFIGURATION & ASSETS ---
 // Place transparent PNG cutouts inside an assets/ folder and set their paths below:
 const CANDIDATE_IMG_URL = ""; // e.g., "./assets/candidate.png"
-const LEADER_IMG_URL = "./leader.png";    // e.g., "./assets/leader.png"
+const LEADER_IMG_URL = "./assets/leader2.png";
 
 const SLOGANS = {
   te: [
@@ -13,7 +13,7 @@ const SLOGANS = {
   ],
   en: [
     "My Support is for\nSaiPrasad",
-    "I Vote for  Symbol",
+    "I Vote for Symbol",
     "Our Family Votes for SaiPrasad",
     "Our Village Stands with SaiPrasad",
     "Together for Moda Grama Panchayathi"
@@ -22,7 +22,7 @@ const SLOGANS = {
 
 const THEMES = {
   classic: { c1: "#0b3b8c", c2: "#169b49", bar: "#072863", accent: "#facc15", text: "#ffffff" },
-  flag:    { c1: "#0b3d91", c2: "#169b49", bar: "#0b3d91", accent: "#ffffff", text: "#ffffff" },
+  flag:    { c1: "#0b3d91", c2: "#169b49", bar: "#0b3d91", accent: "#ffffff", text: "#ffffff", split: true },
   sunrise: { c1: "#d97706", c2: "#b45309", bar: "#78350f", accent: "#fef08a", text: "#ffffff" },
   gold:    { c1: "#0f172a", c2: "#1e3a8a", bar: "#020617", accent: "#fbbf24", text: "#ffffff" },
   wave:    { c1: "#064e3b", c2: "#15803d", bar: "#052e16", accent: "#fde047", text: "#ffffff" }
@@ -47,11 +47,20 @@ const state = {
 const canvas = document.getElementById("frameCanvas");
 const ctx = canvas.getContext("2d");
 
+// Safe image loader for both local file:/// and http/https
 function loadOptionalImage(url, key) {
   if (!url) return;
   const img = new Image();
-  img.crossOrigin = "anonymous";
-  img.onload = () => { state[key] = img; drawCanvas(); };
+  if (url.startsWith("http://") || url.startsWith("https://")) {
+    img.crossOrigin = "anonymous";
+  }
+  img.onload = () => {
+    state[key] = img;
+    drawCanvas();
+  };
+  img.onerror = () => {
+    console.error("Failed to load image:", url);
+  };
   img.src = url;
 }
 loadOptionalImage(CANDIDATE_IMG_URL, "candidateImg");
@@ -107,9 +116,10 @@ function drawCanvas() {
     ctx.fillText(line, W / 2, topOffset + i * 74);
   });
 
+  // Supporter Photo Circle
   const circleR = isTall ? 310 : 255;
-  const circleX = isTall ? W / 2 : 350;
-  const circleY = isTall ? 790 : 540;
+  const circleX = isTall ? W / 2 : 340;
+  const circleY = isTall ? 810 : 540;
 
   ctx.beginPath();
   ctx.arc(circleX, circleY, circleR + 16, 0, Math.PI * 2);
@@ -146,6 +156,7 @@ function drawCanvas() {
   }
   ctx.restore();
 
+  // Supporter Name & Village Pill
   const supName = document.getElementById("supporterName").value.trim();
   const supVillage = document.getElementById("supporterVillage").value.trim();
   if (supName || supVillage) {
@@ -161,12 +172,13 @@ function drawCanvas() {
     ctx.fillText(label, circleX, pillY);
   }
 
-  const leaderX = isTall ? 840 : 860;
-  const leaderY = isTall ? 460 : 370;
-  const leaderR = 115;
+  // Expanded Leader Inset Circle (Top Right)
+  const leaderX = isTall ? 840 : 850;
+  const leaderY = isTall ? 470 : 355;
+  const leaderR = isTall ? 155 : 145;
 
   ctx.beginPath();
-  ctx.arc(leaderX, leaderY, leaderR + 8, 0, Math.PI * 2);
+  ctx.arc(leaderX, leaderY, leaderR + 10, 0, Math.PI * 2);
   ctx.fillStyle = "#ffffff";
   ctx.fill();
 
@@ -176,22 +188,42 @@ function drawCanvas() {
   ctx.clip();
   ctx.fillStyle = "#1e293b";
   ctx.fillRect(leaderX - leaderR, leaderY - leaderR, leaderR * 2, leaderR * 2);
+
   if (state.leaderImg) {
-    ctx.drawImage(state.leaderImg, leaderX - leaderR, leaderY - leaderR, leaderR * 2, leaderR * 2);
+    const imgAspect = state.leaderImg.width / state.leaderImg.height;
+    const diameter = leaderR * 2;
+    let drawW = diameter;
+    let drawH = diameter;
+
+    if (imgAspect > 1) {
+      drawW = diameter * imgAspect;
+    } else {
+      drawH = diameter / imgAspect;
+    }
+
+    ctx.drawImage(
+      state.leaderImg,
+      leaderX - drawW / 2,
+      leaderY - drawH / 2,
+      drawW,
+      drawH
+    );
   } else {
     ctx.fillStyle = "#94a3b8";
-    ctx.font = "600 22px sans-serif";
+    ctx.font = "600 24px sans-serif";
     ctx.fillText("Leader", leaderX, leaderY + 8);
   }
   ctx.restore();
 
+  // Candidate Cutout (Bottom Right)
   const bottomBarH = isTall ? 260 : 195;
   if (state.candidateImg) {
-    const cH = isTall ? 650 : 520;
+    const cH = isTall ? 650 : 500;
     const cW = (state.candidateImg.width / state.candidateImg.height) * cH;
     ctx.drawImage(state.candidateImg, W - cW - 20, H - bottomBarH - cH + 15, cW, cH);
   }
 
+  // Bottom Nameplate Footer
   ctx.fillStyle = "#ffffff";
   ctx.fillRect(0, H - bottomBarH - 12, W, 12);
 
@@ -201,7 +233,7 @@ function drawCanvas() {
   ctx.fillStyle = "#fde047";
   ctx.font = "700 34px sans-serif";
   ctx.fillText(
-    state.lang === "te" ? "మోధ గ్రామ పంచాయతీ సర్పంచ్ స్వతంత్ర అభ్యర్థి" : " Moda Grampa Panchayathi Independent Candidate",
+    state.lang === "te" ? "మోధ గ్రామ పంచాయతీ సర్పంచ్ స్వతంత్ర అభ్యర్థి" : "Moda Grama Panchayathi Independent Candidate",
     W / 2,
     H - bottomBarH + 68
   );
