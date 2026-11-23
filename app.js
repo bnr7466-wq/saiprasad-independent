@@ -21,11 +21,11 @@ const SLOGANS = {
 };
 
 const THEMES = {
-  classic: { c1: "#0b3b8c", c2: "#169b49", bar: "#072863", accent: "#facc15", text: "#ffffff" },
-  flag:    { c1: "#0b3d91", c2: "#169b49", bar: "#0b3d91", accent: "#ffffff", text: "#ffffff", split: true },
-  sunrise: { c1: "#d97706", c2: "#b45309", bar: "#78350f", accent: "#fef08a", text: "#ffffff" },
-  gold:    { c1: "#0f172a", c2: "#1e3a8a", bar: "#020617", accent: "#fbbf24", text: "#ffffff" },
-  wave:    { c1: "#064e3b", c2: "#15803d", bar: "#052e16", accent: "#fde047", text: "#ffffff" }
+  classic: { c1: "#065f46", c2: "#10b981", bar: "#064e3b", accent: "#facc15", text: "#ffffff" }, // Emerald & Bright Green
+  flag:    { c1: "#15803d", c2: "#22c55e", bar: "#14532d", accent: "#ffffff", text: "#ffffff", split: true }, // Vibrant Leaf Split
+  sunrise: { c1: "#166534", c2: "#65a30d", bar: "#052e16", accent: "#fef08a", text: "#ffffff" }, // Forest to Lime Gradient
+  gold:    { c1: "#022c22", c2: "#047857", bar: "#011c16", accent: "#fbbf24", text: "#ffffff" }, // Dark Pine & Gold
+  wave:    { c1: "#115e59", c2: "#0d9488", bar: "#134e4a", accent: "#fde047", text: "#ffffff" }  // Deep Teal & Sea Green
 };
 
 const state = {
