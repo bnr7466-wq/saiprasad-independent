@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I Support Independent Candidate SaiPrasad</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="hero">
+    <div class="logo-circle">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M12 2v7M12 15v7M4.93 4.93l4.95 4.95M14.12 14.12l4.95 4.95M2 12h7M15 12h7"/>
+      </svg>
+    </div>
+    <h1>I support Independent Candidate<br>Saiprasad. Do you?</h1>
+    <p>Make your own campaign photo frame for<br><strong>Thippeswamy Gari Sai Prasad – Moda Grama Panchayathi Candidate</strong></p>
+    <a href="#whatsapp-group" class="whatsapp-pill">Join our WhatsApp group</a>
+  </header>
+
+  <main class="container">
+
+    <!-- Step 1: Upload -->
+    <section class="card">
+      <div class="step-title"><span class="step-badge">1</span> 1. Upload your photo</div>
+      <label class="upload-box" for="photoInput">
+        Upload your image
+        <input type="file" id="photoInput" accept="image/*" hidden />
+      </label>
+    </section>
+
+    <!-- Step 2: Supporter Info -->
+    <section class="card">
+      <div class="step-title"><span class="step-badge">2</span> 2. Your name, village &amp; mobile</div>
+      <div class="input-group">
+        <input type="text" id="supporterName" placeholder="Your name (shown on frame)" />
+        <input type="text" id="supporterVillage" placeholder="Your village" />
+        <input type="tel" id="supporterMobile" placeholder="Mobile number (not shown on image)" />
+      </div>
+      <p class="privacy-note">Your mobile number will not be displayed on the image.</p>
+    </section>
+
+    <!-- Step 3 & 4: Language & Slogans -->
+    <section class="card">
+      <div class="step-title"><span class="step-badge">3</span> 3. Frame language</div>
+      <div class="grid-2" style="margin-bottom: 1.25rem;">
+        <button type="button" class="opt-btn active" data-lang="te">తెలుగు</button>
+        <button type="button" class="opt-btn" data-lang="en">English</button>
+      </div>
+
+      <div class="step-title"><span class="step-badge">4</span> 4. Choose your message</div>
+      <div class="grid-2" id="sloganContainer"></div>
+    </section>
+
+    <!-- Step 5 & 6: Theme & Frame Size -->
+    <section class="card">
+      <div class="step-title"><span class="step-badge">5</span> 5. Choose a theme</div>
+      <div class="theme-grid" id="themeGrid" style="margin-bottom: 1.25rem;">
+        <div class="theme-card active" data-theme="classic">
+          <div class="swatch" style="background: linear-gradient(135deg, #0b3d91, #169b49);"></div>
+          <span class="theme-label">Classic</span>
+        </div>
+        <div class="theme-card" data-theme="flag">
+          <div class="swatch" style="background: linear-gradient(190deg, #0b3d91, #ffffff 33%, #ffffff);"></div>
+          <span class="theme-label">Party flag</span>
+        </div>
+        <div class="theme-card" data-theme="sunrise">
+          <div class="swatch" style="background: linear-gradient(135deg, #f59e0b, #ea580c);"></div>
+          <span class="theme-label">Sunrise</span>
+        </div>
+        <div class="theme-card" data-theme="gold">
+          <div class="swatch" style="background: linear-gradient(135deg, #0f172a, #1e3a8a);"></div>
+          <span class="theme-label">Gold night</span>
+        </div>
+        <div class="theme-card" data-theme="wave">
+          <div class="swatch" style="background: linear-gradient(135deg, #065f46, #10b981);"></div>
+          <span class="theme-label"> wave</span>
+        </div>
+      </div>
+
+      <div class="step-title"><span class="step-badge">6</span> 6. Your frame</div>
+      <div class="grid-2">
+        <button type="button" class="opt-btn active" data-format="square">WhatsApp DP (square)</button>
+        <button type="button" class="opt-btn" data-format="tall">WhatsApp Status (tall)</button>
+      </div>
+
+      <div class="canvas-wrapper">
+        <canvas id="frameCanvas" width="1080" height="1080"></canvas>
+      </div>
+
+      <p class="controls-hint">Drag the photo to move it &middot; use the slider to zoom</p>
+      <div class="zoom-row">
+        <span>-</span>
+        <input type="range" id="zoomSlider" min="0.5" max="2.5" step="0.02" value="1" />
+        <span>+</span>
+      </div>
+
+      <button type="button" class="btn-primary" id="shareBtn">Share on WhatsApp</button>
+      <button type="button" class="btn-secondary" id="downloadBtn">Download photo</button>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
