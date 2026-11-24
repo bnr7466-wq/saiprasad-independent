@@ -1,644 +1,110 @@
 <!DOCTYPE html>
-<html lang="te">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Independent Candidate Sai Prasad - Campaign Banner Generator</title>
-  <!-- Google Fonts & Font Awesome Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Ramabhadra&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <style>
-    :root {
-      --primary-color: #0b6623;
-      --secondary-color: #1e3c72;
-      --accent-color: #ff9933;
-      --bg-color: #f4f7f6;
-      --card-bg: #ffffff;
-      --text-color: #2c3e50;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Poppins', 'Ramabhadra', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
-      padding-bottom: 40px;
-    }
-
-    header {
-      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-      color: white;
-      text-align: center;
-      padding: 25px 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    header h1 {
-      font-size: 1.8rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-    }
-
-    header p {
-      font-size: 0.95rem;
-      opacity: 0.9;
-      margin-top: 5px;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 25px auto;
-      padding: 0 15px;
-    }
-
-    .app-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 25px;
-    }
-
-    @media (min-width: 900px) {
-      .app-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-      border: 1px solid rgba(0,0,0,0.05);
-    }
-
-    .card-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 15px;
-      color: var(--secondary-color);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border-bottom: 2px solid #eef2f5;
-      padding-bottom: 10px;
-    }
-
-    /* Canvas Area */
-    .canvas-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: #e9ecef;
-      border-radius: 12px;
-      overflow: hidden;
-      padding: 10px;
-    }
-
-    canvas {
-      width: 100%;
-      max-width: 480px;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      background: #ffffff;
-      touch-action: none;
-    }
-
-    .canvas-hint {
-      font-size: 0.8rem;
-      color: #6c757d;
-      margin-top: 8px;
-    }
-
-    /* Form Controls */
-    .form-group {
-      margin-bottom: 15px;
-    }
-
-    label {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: #495057;
-    }
-
-    input[type="text"], select, input[type="file"] {
-      width: 100%;
-      padding: 10px 14px;
-      border: 1.5px solid #ced4da;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    input[type="text"]:focus, select:focus {
-      border-color: var(--primary-color);
-    }
-
-    /* Interactive Controls */
-    .controls-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 18px;
-      border: none;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-decoration: none;
-    }
-
-    .btn-primary { background-color: var(--primary-color); color: white; }
-    .btn-secondary { background-color: #6c757d; color: white; }
-    .btn-whatsapp { background-color: #25D366; color: white; }
-    .btn-instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; }
-    .btn-twitter { background-color: #000000; color: white; }
-    .btn-telegram { background-color: #0088cc; color: white; }
-
-    .btn:hover {
-      opacity: 0.9;
-      transform: translateY(-1px);
-    }
-
-    .share-buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    /* Manifesto Section */
-    .manifesto-section {
-      margin-top: 40px;
-    }
-
-    .manifesto-header {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
-    .manifesto-header h2 {
-      font-size: 1.6rem;
-      color: var(--primary-color);
-      font-weight: 800;
-      position: relative;
-      display: inline-block;
-      padding-bottom: 8px;
-    }
-
-    .manifesto-header h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 20%;
-      right: 20%;
-      height: 4px;
-      background: var(--primary-color);
-      border-radius: 2px;
-    }
-
-    .manifesto-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
-    @media (min-width: 600px) {
-      .manifesto-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (min-width: 992px) {
-      .manifesto-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .agenda-card {
-      background: white;
-      border-radius: 14px;
-      padding: 22px;
-      border: 2px solid #e2ece9;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .agenda-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(11, 102, 35, 0.12);
-      border-color: var(--primary-color);
-    }
-
-    .agenda-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--primary-color);
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .agenda-title i {
-      font-size: 1.3rem;
-    }
-
-    .agenda-desc {
-      font-size: 0.9rem;
-      color: #555;
-      line-height: 1.5;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I Support Independent Candidate SaiPrasad</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <header>
-    <h1>స్వతంత్ర అభ్యర్థి సాయి ప్రసాద్</h1>
-    <p>గ్రామ పంచాయితీ ఎన్నికల ప్రచార పోస్టర్ జనరేటర్</p>
+  <!-- Header -->
+  <header class="hero">
+    <div class="logo-circle">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M12 2v7M12 15v7M4.93 4.93l4.95 4.95M14.12 14.12l4.95 4.95M2 12h7M15 12h7"/>
+      </svg>
+    </div>
+    <h1>I support Independent Candidate<br>Saiprasad. Do you?</h1>
+    <p>Make your own campaign photo frame for<br><strong>Thippeswamy Gari Sai Prasad – Moda Grama Panchayathi Candidate</strong></p>
+    <a href="https://chat.whatsapp.com/IqmFqqTO0n0EGqBAKA2Isl?s=sh&p=a&iam=2" class="whatsapp-pill">Join our WhatsApp group</a>
+    <a href="https://bnr7466-wq.github.io/yours-saiprasad-sarpach/" class="whatsapp-pill">గ్రామ పంచాయితీ సమగ్ర అభివృద్ధి – ఎన్నికల ప్రచార అజెండా
+</a>
   </header>
 
-  <div class="container">
-    <div class="app-grid">
-      
-      <!-- Canvas Preview Area -->
-      <div class="card">
-        <div class="card-title">
-          <i class="fa-solid fa-image"></i> డిజిటల్ బ్యానర్ ప్రివ్యూ (Poster Preview)
+  <main class="container">
+
+    <!-- Step 1: Upload -->
+    <section class="card">
+      <div class="step-title"><span class="step-badge">1</span> 1. Upload your photo</div>
+      <label class="upload-box" for="photoInput">
+        Upload your image
+        <input type="file" id="photoInput" accept="image/*" hidden />
+      </label>
+    </section>
+
+    <!-- Step 2: Supporter Info -->
+    <section class="card">
+      <div class="step-title"><span class="step-badge">2</span> 2. Your name, village &amp; mobile</div>
+      <div class="input-group">
+        <input type="text" id="supporterName" placeholder="Your name (shown on frame)" />
+        <input type="text" id="supporterVillage" placeholder="Your village" />
+        <input type="tel" id="supporterMobile" placeholder="Mobile number (not shown on image)" />
+      </div>
+      <p class="privacy-note">Your mobile number will not be displayed on the image.</p>
+    </section>
+
+    <!-- Step 3 & 4: Language & Slogans -->
+    <section class="card">
+      <div class="step-title"><span class="step-badge">3</span> 3. Frame language</div>
+      <div class="grid-2" style="margin-bottom: 1.25rem;">
+        <button type="button" class="opt-btn active" data-lang="te">తెలుగు</button>
+        <button type="button" class="opt-btn" data-lang="en">English</button>
+      </div>
+
+      <div class="step-title"><span class="step-badge">4</span> 4. Choose your message</div>
+      <div class="grid-2" id="sloganContainer"></div>
+    </section>
+
+    <!-- Step 5 & 6: Theme & Frame Size -->
+    <section class="card">
+      <div class="step-title"><span class="step-badge">5</span> 5. Choose a theme</div>
+      <div class="theme-grid" id="themeGrid" style="margin-bottom: 1.25rem;">
+        <div class="theme-card active" data-theme="classic">
+          <div class="swatch" style="background: linear-gradient(135deg, #0b3d91, #169b49);"></div>
+          <span class="theme-label">Classic</span>
         </div>
-        <div class="canvas-container">
-          <canvas id="bannerCanvas" width="1080" height="1080"></canvas>
-          <p class="canvas-hint">💡 చిట్కా: మీ ఫోటోను వేలితో లేదా మౌస్‌తో ప్యాన్/జూమ్ చేయవచ్చు.</p>
+        <div class="theme-card" data-theme="flag">
+          <div class="swatch" style="background: linear-gradient(190deg, #0b3d91, #ffffff 33%, #ffffff);"></div>
+          <span class="theme-label">Party flag</span>
+        </div>
+        <div class="theme-card" data-theme="sunrise">
+          <div class="swatch" style="background: linear-gradient(135deg, #f59e0b, #ea580c);"></div>
+          <span class="theme-label">Sunrise</span>
+        </div>
+        <div class="theme-card" data-theme="gold">
+          <div class="swatch" style="background: linear-gradient(135deg, #0f172a, #1e3a8a);"></div>
+          <span class="theme-label">Gold night</span>
+        </div>
+        <div class="theme-card" data-theme="wave">
+          <div class="swatch" style="background: linear-gradient(135deg, #065f46, #10b981);"></div>
+          <span class="theme-label"> wave</span>
         </div>
       </div>
 
-      <!-- Controls Area -->
-      <div class="card">
-        <div class="card-title">
-          <i class="fa-solid fa-sliders"></i> మీ వివరాలు & ఫోటో సర్దుబాటు
-        </div>
-
-        <div class="form-group">
-          <label><i class="fa-solid fa-upload"></i> మీ ఫోటోను ఎంచుకోండి (Upload Photo)</label>
-          <input type="file" id="userPhotoInput" accept="image/*">
-        </div>
-
-        <div class="form-group">
-          <label><i class="fa-solid fa-user"></i> మద్దతుదారుని పేరు (Supporter Name)</label>
-          <input type="text" id="supporterName" value="కంబగిరి స్వామి" placeholder="మీ పేరు నమోదు చేయండి">
-        </div>
-
-        <div class="form-group">
-          <label><i class="fa-solid fa-location-dot"></i> గ్రామం / వార్డు (Village/Location)</label>
-          <input type="text" id="supporterLocation" value="మోదా గ్రామం" placeholder="మీ ఊరి పేరు">
-        </div>
-
-        <div class="form-group">
-          <label><i class="fa-solid fa-palette"></i> కలర్ థీమ్ (Theme Presets)</label>
-          <select id="themeSelect">
-            <option value="green">ఇండిపెండెంట్ గ్రీన్ & నేవీ (Green & Navy)</option>
-            <option value="saffron">రాయల్ ప్లాటినం & ఆరెంజ్ (Saffron & Slate)</option>
-            <option value="emerald">మోడరన్ ఎమరాల్డ్ & గోల్డ్ (Emerald & Gold)</option>
-          </select>
-        </div>
-
-        <!-- Transform Controls -->
-        <label><i class="fa-solid fa-crop-simple"></i> ఫోటో సైజు మరియు పొజిషన్</label>
-        <div class="controls-grid">
-          <button class="btn btn-secondary" id="zoomInBtn"><i class="fa-solid fa-magnifying-glass-plus"></i> జూమ్ ఇన్</button>
-          <button class="btn btn-secondary" id="zoomOutBtn"><i class="fa-solid fa-magnifying-glass-minus"></i> జూమ్ అవుట్</button>
-          <button class="btn btn-secondary" id="rotateBtn"><i class="fa-solid fa-rotate-right"></i> తిప్పండి</button>
-          <button class="btn btn-secondary" id="flipBtn"><i class="fa-solid fa-right-left"></i> హారిజాంటల్ ఫ్లిప్</button>
-        </div>
-
-        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
-
-        <!-- Download & Sharing Section -->
-        <div class="card-title" style="border:none; padding:0; margin-bottom:10px;">
-          <i class="fa-solid fa-share-nodes"></i> డౌన్‌లోడ్ & సోషల్ మీడియా షేర్
-        </div>
-        
-        <button class="btn btn-primary" id="downloadBtn" style="width: 100%; margin-bottom: 10px;">
-          <i class="fa-solid fa-download"></i> HD బ్యానర్ డౌన్‌లోడ్ చేయండి
-        </button>
-
-        <div class="share-buttons">
-          <button class="btn btn-whatsapp" id="shareWhatsapp">
-            <i class="fa-brands fa-whatsapp"></i> WhatsApp
-          </button>
-          <button class="btn btn-instagram" id="shareInstagram">
-            <i class="fa-brands fa-instagram"></i> Instagram
-          </button>
-          <button class="btn btn-twitter" id="shareTwitter">
-            <i class="fa-brands fa-x-twitter"></i> Twitter/X
-          </button>
-          <button class="btn btn-telegram" id="shareTelegram">
-            <i class="fa-brands fa-telegram"></i> Telegram
-          </button>
-        </div>
+      <div class="step-title"><span class="step-badge">6</span> 6. Your frame</div>
+      <div class="grid-2">
+        <button type="button" class="opt-btn active" data-format="square">WhatsApp DP (square)</button>
+        <button type="button" class="opt-btn" data-format="tall">WhatsApp Status (tall)</button>
       </div>
 
-    </div>
-
-    <!-- 6 Election Manifesto Agenda Cards -->
-    <div class="manifesto-section">
-      <div class="manifesto-header">
-        <h2>గ్రామ పంచాయితీ సమగ్ర అభివృద్ధి - మన ఎన్నికల ప్రచార అజెండా</h2>
+      <div class="canvas-wrapper">
+        <canvas id="frameCanvas" width="1080" height="1080"></canvas>
       </div>
 
-      <div class="manifesto-grid">
-
-        <!-- Point 1 -->
-        <div class="agenda-card">
-          <div class="agenda-title">
-            <i class="fa-solid fa-volleyball" style="color:#e67e22;"></i> యువత మరియు క్రీడా వికాసం
-          </div>
-          <div class="agenda-desc">
-            యువత కోసం క్రీడా మైదానం ఏర్పాటు, మైదాన శుభ్రత పనులు, స్పోర్ట్స్ కిట్లు పంపిణీ మరియు క్రీడా టోర్నమెంట్లకు పూర్తి స్థాయి సహకారం.
-          </div>
-        </div>
-
-        <!-- Point 2 -->
-        <div class="agenda-card">
-          <div class="agenda-title">
-            <i class="fa-solid fa-mosque" style="color:#8e44ad;"></i> మైనారిటీల సంక్షేమం
-          </div>
-          <div class="agenda-desc">
-            మొహర్రం పండుగ మరియు ఇతర కార్యక్రమాల నిర్వహణ కోసం శాశ్వత షెడ్డు నిర్మాణం మరియు అవసరమైన మౌలిక సదుపాయాల కల్పన.
-          </div>
-        </div>
-
-        <!-- Point 3 -->
-        <div class="agenda-card">
-          <div class="agenda-title">
-            <i class="fa-solid fa-gopuram" style="color:#d35400;"></i> మోదా గ్రామం & ఆలయాల అభివృద్ధి
-          </div>
-          <div class="agenda-desc">
-            మోదా గ్రామ ప్రధాన ద్వారం వద్ద సుందరమైన ఆర్చ్ నిర్మాణం మరియు గ్రామ పంచాయతీ పరిధిలోని దేవాలయాల అభివృద్ధి పనులు.
-          </div>
-        </div>
-
-        <!-- Point 4 -->
-        <div class="agenda-card">
-          <div class="agenda-title">
-            <i class="fa-solid fa-video" style="color:#2980b9;"></i> బాలికల రక్షణ & గ్రామ భద్రత
-          </div>
-          <div class="agenda-desc">
-            పాఠశాల బాలికల భద్రతకు ప్రత్యేక చర్యలు మరియు పాఠశాల జోన్, బస్టాండ్, ప్రధాన ప్రవేశ ద్వారాల వద్ద సీసీ కెమెరాల ఏర్పాటు.
-          </div>
-        </div>
-
-        <!-- Point 5 -->
-        <div class="agenda-card">
-          <div class="agenda-title">
-            <i class="fa-solid fa-tree" style="color:#27ae60;"></i> పారిశుధ్యం & హరిత గ్రామం
-          </div>
-          <div class="agenda-desc">
-            గ్రామంలో నిరంతర పారిశుధ్య నిర్వహణ, పరిశుభ్రత మరియు పచ్చదనం కోసం విరివిగా మొక్కలు నాటడం, వాటి సంరక్షణ.
-          </div>
-        </div>
-
-        <!-- Point 6 -->
-        <div class="agenda-card">
-          <div class="agenda-title">
-            <i class="fa-solid fa-handshake-angle" style="color:#f39c12;"></i> సంక్షేమ పథకాలు
-          </div>
-          <div class="agenda-desc">
-            అర్హులైన ప్రతి ఒక్కరికీ పింఛన్లు, ఇళ్లు, రేషన్, రైతు సంక్షేమ పథకాల విషయంలో పూర్తి సహాయ సహకారాలు.
-          </div>
-        </div>
-
+      <p class="controls-hint">Drag the photo to move it &middot; use the slider to zoom</p>
+      <div class="zoom-row">
+        <span>-</span>
+        <input type="range" id="zoomSlider" min="0.5" max="2.5" step="0.02" value="1" />
+        <span>+</span>
       </div>
-    </div>
-  </div>
 
-  <script>
-    const canvas = document.getElementById('bannerCanvas');
-    const ctx = canvas.getContext('2d');
+      <button type="button" class="btn-primary" id="shareBtn">Share on WhatsApp</button>
+      <button type="button" class="btn-secondary" id="downloadBtn">Download photo</button>
+    </section>
+  </main>
 
-    // Images State
-    let leaderImg = new Image();
-    let userImg = null;
-
-    // User Image Transformation State
-    let scale = 1;
-    let offsetX = 0;
-    let offsetY = 0;
-    let rotation = 0;
-    let isFlipped = false;
-
-    // Dragging State
-    let isDragging = false;
-    let startX, startY;
-
-    // Preload Fixed Candidate Image (photo.jpg)
-    leaderImg.src = 'photo.jpg';
-    leaderImg.onload = () => drawCanvas();
-    leaderImg.onerror = () => {
-      console.log('photo.jpg not found, using SVG canvas fallback.');
-      drawCanvas();
-    };
-
-    // User Photo Upload
-    document.getElementById('userPhotoInput').addEventListener('change', function(e) {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(evt) {
-          userImg = new Image();
-          userImg.onload = function() {
-            scale = 1;
-            offsetX = 0;
-            offsetY = 0;
-            rotation = 0;
-            isFlipped = false;
-            drawCanvas();
-          };
-          userImg.src = evt.target.result;
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-
-    // Event Listeners for Live Text & Theme Changes
-    document.getElementById('supporterName').addEventListener('input', drawCanvas);
-    document.getElementById('supporterLocation').addEventListener('input', drawCanvas);
-    document.getElementById('themeSelect').addEventListener('change', drawCanvas);
-
-    // Image Transform Buttons
-    document.getElementById('zoomInBtn').addEventListener('click', () => { scale *= 1.1; drawCanvas(); });
-    document.getElementById('zoomOutBtn').addEventListener('click', () => { scale /= 1.1; drawCanvas(); });
-    document.getElementById('rotateBtn').addEventListener('click', () => { rotation += 90; drawCanvas(); });
-    document.getElementById('flipBtn').addEventListener('click', () => { isFlipped = !isFlipped; drawCanvas(); });
-
-    // Drag & Touch Handling
-    canvas.addEventListener('mousedown', startDrag);
-    canvas.addEventListener('mousemove', drag);
-    canvas.addEventListener('mouseup', stopDrag);
-    canvas.addEventListener('mouseleave', stopDrag);
-
-    canvas.addEventListener('touchstart', (e) => startDrag(e.touches[0]));
-    canvas.addEventListener('touchmove', (e) => drag(e.touches[0]));
-    canvas.addEventListener('touchend', stopDrag);
-
-    function startDrag(e) {
-      isDragging = true;
-      const rect = canvas.getBoundingClientRect();
-      const scaleX = canvas.width / rect.width;
-      const scaleY = canvas.height / rect.height;
-      startX = e.clientX * scaleX - offsetX;
-      startY = e.clientY * scaleY - offsetY;
-    }
-
-    function drag(e) {
-      if (!isDragging || !userImg) return;
-      const rect = canvas.getBoundingClientRect();
-      const scaleX = canvas.width / rect.width;
-      const scaleY = canvas.height / rect.height;
-      offsetX = e.clientX * scaleX - startX;
-      offsetY = e.clientY * scaleY - startY;
-      drawCanvas();
-    }
-
-    function stopDrag() {
-      isDragging = false;
-    }
-
-    // Main Canvas Render Engine
-    function drawCanvas() {
-      const w = canvas.width;
-      const h = canvas.height;
-      const theme = document.getElementById('themeSelect').value;
-
-      let primaryBg = '#0b6623';
-      let accentBg = '#1e3c72';
-
-      if (theme === 'saffron') { primaryBg = '#ff9933'; accentBg = '#2c3e50'; }
-      if (theme === 'emerald') { primaryBg = '#005f73'; accentBg = '#94d2bd'; }
-
-      ctx.clearRect(0, 0, w, h);
-
-      // Background Grid Pattern
-      ctx.fillStyle = '#f8f9fa';
-      ctx.fillRect(0, 0, w, h);
-
-      // Left Panel: Fixed Leader Photo
-      ctx.save();
-      ctx.beginPath();
-      ctx.rect(0, 0, w / 2, h * 0.72);
-      ctx.clip();
-      if (leaderImg.complete && leaderImg.naturalWidth !== 0) {
-        ctx.drawImage(leaderImg, 0, 0, w / 2, h * 0.72);
-      } else {
-        ctx.fillStyle = '#e9ecef';
-        ctx.fillRect(0, 0, w / 2, h * 0.72);
-        ctx.fillStyle = primaryBg;
-        ctx.font = 'bold 36px Ramabhadra';
-        ctx.textAlign = 'center';
-        ctx.fillText('సాయి ప్రసాద్', w / 4, h * 0.35);
-      }
-      ctx.restore();
-
-      // Right Panel: User / Supporter Photo
-      ctx.save();
-      ctx.beginPath();
-      ctx.rect(w / 2, 0, w / 2, h * 0.72);
-      ctx.clip();
-      if (userImg) {
-        ctx.translate(w * 0.75 + offsetX, h * 0.36 + offsetY);
-        ctx.rotate((rotation * Math.PI) / 180);
-        ctx.scale(isFlipped ? -scale : scale, scale);
-        ctx.drawImage(userImg, -userImg.width / 2, -userImg.height / 2);
-      } else {
-        ctx.fillStyle = '#dee2e6';
-        ctx.fillRect(w / 2, 0, w / 2, h * 0.72);
-        ctx.fillStyle = '#6c757d';
-        ctx.font = 'bold 28px Poppins';
-        ctx.textAlign = 'center';
-        ctx.fillText('మీ ఫోటో ఎంచుకోండి', w * 0.75, h * 0.36);
-        ctx.font = '22px Poppins';
-        ctx.fillText('(Upload Photo)', w * 0.75, h * 0.40);
-      }
-      ctx.restore();
-
-      // Center Dividing Stripe
-      ctx.fillStyle = primaryBg;
-      ctx.fillRect(w / 2 - 4, 0, 8, h * 0.72);
-
-      // Bottom Campaign Banner Card Overlay
-      ctx.fillStyle = primaryBg;
-      ctx.fillRect(0, h * 0.72, w, h * 0.28);
-
-      ctx.fillStyle = accentBg;
-      ctx.fillRect(0, h * 0.72, w, 40);
-
-      // Banner Text Content
-      ctx.fillStyle = '#ffffff';
-      ctx.font = 'bold 36px Ramabhadra';
-      ctx.textAlign = 'center';
-      ctx.fillText('స్వతంత్ర అభ్యర్థి - సాయి ప్రసాద్', w / 2, h * 0.72 + 30);
-
-      ctx.font = 'bold 42px Ramabhadra';
-      ctx.fillStyle = '#ffeb3b';
-      ctx.fillText('ఓటు వేసి గెలిపించండి!', w / 2, h * 0.83);
-
-      // Dynamic Supporter & Location Text
-      const name = document.getElementById('supporterName').value || '';
-      const location = document.getElementById('supporterLocation').value || '';
-
-      ctx.fillStyle = '#ffffff';
-      ctx.font = '28px Ramabhadra';
-      ctx.fillText(`మద్దతుదారులు: ${name} (${location})`, w / 2, h * 0.93);
-    }
-
-    // High-Res Image Download Button
-    document.getElementById('downloadBtn').addEventListener('click', () => {
-      const link = document.createElement('a');
-      link.download = 'sai-prasad-campaign-banner.png';
-      link.href = canvas.toDataURL('image/png');
-      link.click();
-    });
-
-    // Social Sharing Functionalities
-    const shareText = "స్వతంత్ర అభ్యర్థి సాయి ప్రసాద్ గారికి మీ అమూల్యమైన ఓటు వేసి గెలిపించండి! మన గ్రామం, మన హక్కు!";
-    const pageUrl = window.location.href;
-
-    document.getElementById('shareWhatsapp').addEventListener('click', () => {
-      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + ' ' + pageUrl)}`, '_blank');
-    });
-
-    document.getElementById('shareInstagram').addEventListener('click', () => {
-      alert('బ్యానర్‌ను డౌన్‌లోడ్ చేసి మీ ఇన్‌స్టాగ్రామ్ స్టోరీ లేదా పోస్ట్‌లో షేర్ చేయండి!');
-      document.getElementById('downloadBtn').click();
-    });
-
-    document.getElementById('shareTwitter').addEventListener('click', () => {
-      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(pageUrl)}`, '_blank');
-    });
-
-    document.getElementById('shareTelegram').addEventListener('click', () => {
-      window.open(`https://t.me/share/url?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareText)}`, '_blank');
-    });
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
