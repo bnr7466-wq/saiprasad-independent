@@ -1,7 +1,7 @@
 // --- CONFIGURATION & ASSETS ---
 // Place transparent PNG cutouts inside an assets/ folder and set their paths below:
 const CANDIDATE_IMG_URL = ""; // e.g., "./assets/candidate.png"
-const LEADER_IMG_URL = "./leader2.png";    // e.g., "./assets/leader.png"
+const LEADER_IMG_URL = "./banner.png";    // e.g., "./assets/leader.png"
 
 const SLOGANS = {
   te: [
