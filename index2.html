@@ -13,7 +13,6 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Base typography and smooth scrolling setup */
         body {
             font-family: 'Poppins', 'Ramabhadra', sans-serif;
             background-color: #f1f5f9;
@@ -25,14 +24,12 @@
             line-height: 1.5;
         }
 
-        /* Prevent page scroll while dragging supporter photo on touch devices */
         #bannerCanvas {
             touch-action: none;
             user-select: none;
             -webkit-user-select: none;
         }
 
-        /* Subtle card hover elevation for manifesto items */
         .manifesto-card {
             transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
         }
@@ -50,10 +47,9 @@
     <header class="bg-gradient-to-r from-emerald-950 via-green-800 to-blue-950 text-white shadow-xl border-b-4 border-amber-400">
         <div class="max-w-6xl mx-auto px-4 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-4">
-                <!-- Gampa / Basket Symbol Badge Header -->
                 <div class="bg-amber-50 p-2 rounded-full shadow-lg border-2 border-amber-400 w-16 h-16 flex items-center justify-center shrink-0 overflow-hidden">
                     <img id="headerGampaImg"
-                         src="https://raw.githubusercontent.com/bnr7466-wq/saiprasad-independent/development/gampa.png"
+                         src="./gampa.png"
                          alt="Gampa Symbol"
                          class="w-12 h-12 object-contain"
                          data-fallback-used="0"
@@ -67,13 +63,13 @@
                 </div>
             </div>
 
-            <!-- Election Symbol Summary Badge -->
+            <!-- Royal Blue Highlight Area: Use gampa.png -->
             <div class="flex items-center bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-2.5 gap-3 shadow-md">
-                <img id="headerBallotImg"
-                     src="https://raw.githubusercontent.com/bnr7466-wq/saiprasad-independent/development/ballot.png"
-                     alt="Ballot Box"
-                     class="w-12 h-12 object-contain"
-                     onerror="this.src='https://placehold.co/100x100/ffffff/1b5e20?text=Ballot'">
+                <img id="headerRoyalBlueGampaImg"
+                     src="./gampa.png"
+                     alt="Gampa Symbol"
+                     class="w-12 h-12 object-contain bg-white rounded-xl p-1"
+                     onerror="this.src='https://placehold.co/100x100/ffffff/1b5e20?text=Gampa'">
                 <div class="text-right">
                     <p class="text-xs text-amber-200 telugu-font">ఎన్నికల గుర్తు</p>
                     <p class="text-lg font-bold telugu-font text-white">గంప (Gampa)</p>
@@ -103,7 +99,7 @@
                     <canvas id="bannerCanvas" class="w-full max-w-[480px] aspect-square rounded-xl shadow-md bg-white"></canvas>
                     <p class="text-xs sm:text-sm text-slate-600 mt-3 text-center telugu-font">
                         <i class="fa-solid fa-hand-pointer text-amber-600 mr-1"></i>
-                        ఆకుపచ్చ వృత్తంలోని మీ ఫోటోను వేలితో లేదా మౌస్‌తో లాగి సర్దుబాటు చేయవచ్చు.
+                        లైట్ గ్రీన్ బాక్స్‌లోని మీ ఫోటోను వేలితో లేదా మౌస్‌తో లాగి సర్దుబాటు చేయవచ్చు.
                     </p>
                 </div>
             </div>
@@ -244,7 +240,6 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Agenda 1 -->
                 <article class="manifesto-card bg-white rounded-2xl p-6 border-2 border-slate-200/80 shadow-sm">
                     <div class="flex items-center gap-3 mb-3">
                         <div class="w-11 h-11 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl shrink-0">
@@ -257,7 +252,6 @@
                     </p>
                 </article>
 
-                <!-- Agenda 2 -->
                 <article class="manifesto-card bg-white rounded-2xl p-6 border-2 border-slate-200/80 shadow-sm">
                     <div class="flex items-center gap-3 mb-3">
                         <div class="w-11 h-11 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-xl shrink-0">
@@ -270,7 +264,6 @@
                     </p>
                 </article>
 
-                <!-- Agenda 3 -->
                 <article class="manifesto-card bg-white rounded-2xl p-6 border-2 border-slate-200/80 shadow-sm">
                     <div class="flex items-center gap-3 mb-3">
                         <div class="w-11 h-11 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl shrink-0">
@@ -283,7 +276,6 @@
                     </p>
                 </article>
 
-                <!-- Agenda 4 -->
                 <article class="manifesto-card bg-white rounded-2xl p-6 border-2 border-slate-200/80 shadow-sm">
                     <div class="flex items-center gap-3 mb-3">
                         <div class="w-11 h-11 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center text-xl shrink-0">
@@ -296,7 +288,6 @@
                     </p>
                 </article>
 
-                <!-- Agenda 5 -->
                 <article class="manifesto-card bg-white rounded-2xl p-6 border-2 border-slate-200/80 shadow-sm">
                     <div class="flex items-center gap-3 mb-3">
                         <div class="w-11 h-11 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl shrink-0">
@@ -309,7 +300,6 @@
                     </p>
                 </article>
 
-                <!-- Agenda 6 -->
                 <article class="manifesto-card bg-white rounded-2xl p-6 border-2 border-slate-200/80 shadow-sm">
                     <div class="flex items-center gap-3 mb-3">
                         <div class="w-11 h-11 rounded-xl bg-yellow-100 text-yellow-700 flex items-center justify-center text-xl shrink-0">
@@ -331,7 +321,7 @@
             <div class="flex items-center gap-3">
                 <div class="bg-amber-50 p-1 rounded-full w-9 h-9 flex items-center justify-center shrink-0 overflow-hidden">
                     <img id="footerGampaImg"
-                         src="https://raw.githubusercontent.com/bnr7466-wq/saiprasad-independent/development/gampa.png"
+                         src="./gampa.png"
                          class="w-7 h-7 object-contain"
                          alt="Gampa Icon"
                          data-fallback-used="0"
@@ -346,18 +336,16 @@
 
     <!-- Canvas Logic JavaScript -->
     <script>
-        // Repository asset URLs for candidate photo, gampa symbol, fallback basket, and ballot box
         const ASSETS = {
-            leader: 'https://raw.githubusercontent.com/bnr7466-wq/saiprasad-independent/development/leader%20photo%204.png',
-            gampa: 'https://raw.githubusercontent.com/bnr7466-wq/saiprasad-independent/development/gampa.png',
-            basketFallback: 'https://raw.githubusercontent.com/bnr7466-wq/saiprasad-independent/development/basket.png',
-            ballot: 'https://raw.githubusercontent.com/bnr7466-wq/saiprasad-independent/development/ballot.png'
+            leader: './leader1.png',
+            gampa: './gampa.png',
+            fourImg: './4.png',
+            ballot: './ballot.png'
         };
 
         const canvas = document.getElementById('bannerCanvas');
         const ctx = canvas.getContext('2d');
 
-        // Logical poster resolution is fixed at 1080x1080 for HD export
         const POSTER_SIZE = 1080;
         canvas.width = POSTER_SIZE;
         canvas.height = POSTER_SIZE;
@@ -377,16 +365,16 @@
 
         let leaderImg = new Image();
         let gampaImg = new Image();
+        let fourImg = new Image();
         let ballotImg = new Image();
         let userImg = new Image();
 
         let isLeaderLoaded = false;
         let isGampaLoaded = false;
-        let gampaFallbackStep = 0; // 0: gampa.png, 1: basket.png, 2: custom woven gampa vector
+        let isFourLoaded = false;
         let isBallotLoaded = false;
         let isUserLoaded = false;
 
-        // Supporter photo transform state inside the green circle
         let transform = {
             x: 0,
             y: 0,
@@ -395,11 +383,11 @@
             flipH: false
         };
 
-        // Circle geometry used for hit-testing and clipping
-        let circleArea = {
-            x: 810,
-            y: 265,
-            radius: 165
+        // Light Green Highlight Square Box geometry for supporter photo
+        let supporterBox = {
+            x: 615,
+            y: 75,
+            size: 360
         };
 
         let isDragging = false;
@@ -411,32 +399,43 @@
                 primary: '#1b5e20',
                 secondary: '#0d47a1',
                 accent: '#fbc02d',
-                circleBorder: '#16a34a',
-                ballotRed: '#dc2626',
-                squareFrameBg: '#fffbeb',
-                squareFrameBorder: '#1b5e20'
+                lightGreenBg: '#dcfce7',
+                lightGreenBorder: '#22c55e',
+                yellowHighlightBg: '#fef08a',
+                yellowHighlightBorder: '#eab308',
+                redHighlightBg: '#fee2e2',
+                redHighlightBorder: '#ef4444',
+                pinkHighlightBg: '#fce7f3',
+                pinkHighlightBorder: '#ec4899'
             },
             saffron: {
                 primary: '#e65100',
                 secondary: '#37474f',
                 accent: '#ffd600',
-                circleBorder: '#15803d',
-                ballotRed: '#d32f2f',
-                squareFrameBg: '#fffbeb',
-                squareFrameBorder: '#e65100'
+                lightGreenBg: '#dcfce7',
+                lightGreenBorder: '#16a34a',
+                yellowHighlightBg: '#fef08a',
+                yellowHighlightBorder: '#ca8a04',
+                redHighlightBg: '#fee2e2',
+                redHighlightBorder: '#dc2626',
+                pinkHighlightBg: '#fce7f3',
+                pinkHighlightBorder: '#db2777'
             },
             emerald: {
                 primary: '#004d40',
                 secondary: '#00695c',
                 accent: '#ffb300',
-                circleBorder: '#10b981',
-                ballotRed: '#e11d48',
-                squareFrameBg: '#fffbeb',
-                squareFrameBorder: '#004d40'
+                lightGreenBg: '#dcfce7',
+                lightGreenBorder: '#10b981',
+                yellowHighlightBg: '#fef08a',
+                yellowHighlightBorder: '#d97706',
+                redHighlightBg: '#fee2e2',
+                redHighlightBorder: '#e11d48',
+                pinkHighlightBg: '#fce7f3',
+                pinkHighlightBorder: '#ec4899'
             }
         };
 
-        // Polyfill roundRect for browsers that do not support CanvasRenderingContext2D.roundRect
         function drawRoundedRect(x, y, w, h, r) {
             const radius = Math.min(r, w / 2, h / 2);
             ctx.beginPath();
@@ -452,20 +451,12 @@
             }
         }
 
-        // Draws a clean woven gampa (traditional basket) without any checkerboard background
         function drawWovenGampaIllustration(targetCtx, cx, cy, size, strokeColor = '#78350f', fillColor = '#d97706') {
             targetCtx.save();
             targetCtx.translate(cx, cy);
             const s = size / 120;
             targetCtx.scale(s, s);
 
-            // Soft warm backdrop disc inside symbol frame
-            targetCtx.beginPath();
-            targetCtx.arc(0, 0, 52, 0, Math.PI * 2);
-            targetCtx.fillStyle = '#fef3c7';
-            targetCtx.fill();
-
-            // Woven gampa body
             targetCtx.beginPath();
             targetCtx.moveTo(-38, -14);
             targetCtx.quadraticCurveTo(-44, 24, -22, 34);
@@ -478,24 +469,6 @@
             targetCtx.strokeStyle = strokeColor;
             targetCtx.stroke();
 
-            // Basket weave ribs
-            targetCtx.lineWidth = 2.5;
-            targetCtx.strokeStyle = '#92400e';
-            [-6, 8, 22].forEach((yLine) => {
-                targetCtx.beginPath();
-                targetCtx.moveTo(-34, yLine);
-                targetCtx.lineTo(34, yLine);
-                targetCtx.stroke();
-            });
-
-            [-16, 0, 16].forEach((xLine) => {
-                targetCtx.beginPath();
-                targetCtx.moveTo(xLine, -14);
-                targetCtx.lineTo(xLine * 0.75, 34);
-                targetCtx.stroke();
-            });
-
-            // Top rim of the gampa
             targetCtx.beginPath();
             targetCtx.roundRect(-42, -22, 84, 11, 5);
             targetCtx.fillStyle = '#b45309';
@@ -504,26 +477,14 @@
             targetCtx.strokeStyle = strokeColor;
             targetCtx.stroke();
 
-            // Side handles
-            targetCtx.lineWidth = 4;
-            targetCtx.strokeStyle = strokeColor;
-            targetCtx.beginPath();
-            targetCtx.arc(-43, -12, 7, Math.PI * 0.5, Math.PI * 1.5);
-            targetCtx.stroke();
-
-            targetCtx.beginPath();
-            targetCtx.arc(43, -12, 7, -Math.PI * 0.5, Math.PI * 0.5);
-            targetCtx.stroke();
-
             targetCtx.restore();
         }
 
-        // Handles DOM <img> fallback from gampa.png -> basket.png -> woven gampa canvas
         function handleGampaImgError(imgEl) {
             const stage = Number(imgEl.getAttribute('data-fallback-used') || '0');
             if (stage === 0) {
                 imgEl.setAttribute('data-fallback-used', '1');
-                imgEl.src = ASSETS.basketFallback;
+                imgEl.src = './gampa.png';
             } else {
                 imgEl.setAttribute('data-fallback-used', '2');
                 imgEl.classList.add('hidden');
@@ -544,21 +505,15 @@
 
         function showToast(message, type = 'info') {
             const existing = document.getElementById('statusToast');
-            if (existing) {
-                existing.remove();
-            }
+            if (existing) existing.remove();
 
             const toast = document.createElement('div');
             toast.id = 'statusToast';
             toast.className = 'fixed bottom-5 right-5 z-50 px-4 py-3 rounded-xl shadow-xl text-sm font-semibold text-white transition-opacity duration-300 telugu-font';
 
-            if (type === 'success') {
-                toast.classList.add('bg-emerald-700');
-            } else if (type === 'error') {
-                toast.classList.add('bg-rose-700');
-            } else {
-                toast.classList.add('bg-slate-900');
-            }
+            if (type === 'success') toast.classList.add('bg-emerald-700');
+            else if (type === 'error') toast.classList.add('bg-rose-700');
+            else toast.classList.add('bg-slate-900');
 
             toast.textContent = message;
             document.body.appendChild(toast);
@@ -592,33 +547,28 @@
             };
         }
 
-        function isInsideSupporterCircle(pt) {
-            const dx = pt.x - circleArea.x;
-            const dy = pt.y - circleArea.y;
-            return Math.hypot(dx, dy) <= circleArea.radius;
+        function isInsideSupporterBox(pt) {
+            return (
+                pt.x >= supporterBox.x &&
+                pt.x <= supporterBox.x + supporterBox.size &&
+                pt.y >= supporterBox.y &&
+                pt.y <= supporterBox.y + supporterBox.size
+            );
         }
 
         function init() {
-            leaderImg.crossOrigin = "anonymous";
             leaderImg.onload = () => { isLeaderLoaded = true; drawCanvas(); };
             leaderImg.onerror = () => { isLeaderLoaded = false; drawCanvas(); };
             leaderImg.src = ASSETS.leader;
 
-            gampaImg.crossOrigin = "anonymous";
             gampaImg.onload = () => { isGampaLoaded = true; drawCanvas(); };
-            gampaImg.onerror = () => {
-                if (gampaFallbackStep === 0) {
-                    gampaFallbackStep = 1;
-                    gampaImg.src = ASSETS.basketFallback;
-                } else {
-                    gampaFallbackStep = 2;
-                    isGampaLoaded = false;
-                    drawCanvas();
-                }
-            };
+            gampaImg.onerror = () => { isGampaLoaded = false; drawCanvas(); };
             gampaImg.src = ASSETS.gampa;
 
-            ballotImg.crossOrigin = "anonymous";
+            fourImg.onload = () => { isFourLoaded = true; drawCanvas(); };
+            fourImg.onerror = () => { isFourLoaded = false; drawCanvas(); };
+            fourImg.src = ASSETS.fourImg;
+
             ballotImg.onload = () => { isBallotLoaded = true; drawCanvas(); };
             ballotImg.onerror = () => { isBallotLoaded = false; drawCanvas(); };
             ballotImg.src = ASSETS.ballot;
@@ -675,7 +625,7 @@
 
             canvas.addEventListener('mousedown', (e) => {
                 const pt = getCanvasPoint(e);
-                if (isUserLoaded && isInsideSupporterCircle(pt)) {
+                if (isUserLoaded && isInsideSupporterBox(pt)) {
                     isDragging = true;
                     startX = pt.x - transform.x;
                     startY = pt.y - transform.y;
@@ -697,7 +647,7 @@
             canvas.addEventListener('touchstart', (e) => {
                 if (!e.touches || !e.touches[0]) return;
                 const pt = getCanvasPoint(e.touches[0]);
-                if (isUserLoaded && isInsideSupporterCircle(pt)) {
+                if (isUserLoaded && isInsideSupporterBox(pt)) {
                     e.preventDefault();
                     isDragging = true;
                     startX = pt.x - transform.x;
@@ -762,7 +712,7 @@
         function drawCanvas() {
             const w = canvas.width;
             const h = canvas.height;
-            const upperHeight = Math.round(h * 0.72);
+            const upperHeight = Math.round(h * 0.70);
             const bottomHeight = h - upperHeight;
             const themeKey = themeSelect.value || 'green';
             const theme = THEMES[themeKey] || THEMES.green;
@@ -777,7 +727,7 @@
             ctx.fillRect(0, 0, w, upperHeight);
 
             // 2. Left Panel: Candidate Portrait
-            const leftPanelW = Math.round(w * 0.52);
+            const leftPanelW = Math.round(w * 0.50);
             ctx.save();
             ctx.beginPath();
             ctx.rect(0, 0, leftPanelW, upperHeight);
@@ -808,213 +758,244 @@
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.fillText('సాయి ప్రసాద్', leftPanelW / 2, upperHeight * 0.45);
-                ctx.font = 'bold 26px Poppins, sans-serif';
-                ctx.fillStyle = theme.accent;
-                ctx.fillText('స్వతంత్ర అభ్యర్థి', leftPanelW / 2, upperHeight * 0.55);
             }
 
-            // Candidate name ribbon at bottom of left portrait
-            ctx.fillStyle = 'rgba(13, 40, 24, 0.88)';
-            ctx.fillRect(0, upperHeight - 74, leftPanelW, 74);
+            ctx.fillStyle = 'rgba(13, 40, 24, 0.9)';
+            ctx.fillRect(0, upperHeight - 72, leftPanelW, 72);
             ctx.fillStyle = theme.accent;
             ctx.font = 'bold 34px Ramabhadra, sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            ctx.fillText('సాయి ప్రసాద్', leftPanelW / 2, upperHeight - 37);
+            ctx.fillText('సాయి ప్రసాద్', leftPanelW / 2, upperHeight - 36);
             ctx.restore();
 
-            // 3. Subtle Transparent Watermark Layer Across Upper Section
-            ctx.save();
-            ctx.globalAlpha = 0.08;
-            const wmSize = 620;
-            if (isGampaLoaded && gampaImg.width > 0 && gampaImg.height > 0) {
-                ctx.drawImage(gampaImg, (w - wmSize) / 2, (upperHeight - wmSize) / 2, wmSize, wmSize);
-            } else {
-                drawWovenGampaIllustration(ctx, w / 2, upperHeight / 2, wmSize * 0.85, theme.primary, theme.accent);
-            }
-            ctx.restore();
-
-            // 4. Right Top: Green Circle Supporter Photo
-            circleArea = {
-                x: Math.round(w * 0.765),
-                y: Math.round(upperHeight * 0.31),
-                radius: 165
+            // 3. Light Green Highlight Square Box for Supporter Photo (Square instead of Circle)
+            supporterBox = {
+                x: 585,
+                y: 55,
+                size: 420
             };
 
             ctx.save();
-            ctx.beginPath();
-            ctx.arc(circleArea.x, circleArea.y, circleArea.radius + 10, 0, Math.PI * 2);
-            ctx.fillStyle = '#ffffff';
+            drawRoundedRect(
+                supporterBox.x - 12,
+                supporterBox.y - 12,
+                supporterBox.size + 24,
+                supporterBox.size + 24,
+                28
+            );
+            ctx.fillStyle = theme.lightGreenBg;
             ctx.fill();
-            ctx.lineWidth = 10;
-            ctx.strokeStyle = theme.circleBorder;
+            ctx.lineWidth = 8;
+            ctx.strokeStyle = theme.lightGreenBorder;
             ctx.stroke();
 
-            ctx.beginPath();
-            ctx.arc(circleArea.x, circleArea.y, circleArea.radius, 0, Math.PI * 2);
+            drawRoundedRect(supporterBox.x, supporterBox.y, supporterBox.size, supporterBox.size, 20);
             ctx.clip();
 
-            ctx.fillStyle = '#f1f5f9';
-            ctx.fillRect(
-                circleArea.x - circleArea.radius,
-                circleArea.y - circleArea.radius,
-                circleArea.radius * 2,
-                circleArea.radius * 2
-            );
+            ctx.fillStyle = '#f0fdf4';
+            ctx.fillRect(supporterBox.x, supporterBox.y, supporterBox.size, supporterBox.size);
 
             if (isUserLoaded && userImg.width > 0 && userImg.height > 0) {
+                const centerX = supporterBox.x + supporterBox.size / 2;
+                const centerY = supporterBox.y + supporterBox.size / 2;
+
                 ctx.save();
-                ctx.translate(circleArea.x + transform.x, circleArea.y + transform.y);
+                ctx.translate(centerX + transform.x, centerY + transform.y);
                 ctx.rotate((transform.rotation * Math.PI) / 180);
                 ctx.scale(transform.flipH ? -transform.scale : transform.scale, transform.scale);
 
-                const diameter = circleArea.radius * 2;
-                const coverScale = Math.max(diameter / userImg.width, diameter / userImg.height);
+                const coverScale = Math.max(supporterBox.size / userImg.width, supporterBox.size / userImg.height);
                 const drawW = userImg.width * coverScale;
                 const drawH = userImg.height * coverScale;
                 ctx.drawImage(userImg, -drawW / 2, -drawH / 2, drawW, drawH);
                 ctx.restore();
             } else {
-                ctx.fillStyle = '#1e293b';
-                ctx.font = 'bold 30px Ramabhadra, sans-serif';
+                const centerX = supporterBox.x + supporterBox.size / 2;
+                const centerY = supporterBox.y + supporterBox.size / 2;
+                ctx.fillStyle = '#14532d';
+                ctx.font = 'bold 34px Ramabhadra, sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                ctx.fillText('మీ ఫోటో', circleArea.x, circleArea.y - 16);
-                ctx.font = '22px Ramabhadra, sans-serif';
-                ctx.fillStyle = '#475569';
-                ctx.fillText('ఇక్కడ జతచేయండి', circleArea.x, circleArea.y + 24);
+                ctx.fillText('మీ ఫోటో', centerX, centerY - 20);
+                ctx.font = '24px Ramabhadra, sans-serif';
+                ctx.fillStyle = '#166534';
+                ctx.fillText('స్క్వేర్ బాక్స్‌లో జతచేయండి', centerX, centerY + 24);
             }
             ctx.restore();
 
-            // 5. Right Bottom: Square Frame for Gampa / Basket Symbol
-            const sqSize = 225;
-            const sqX = Math.round(circleArea.x - sqSize / 2);
-            const sqY = Math.round(circleArea.y + circleArea.radius + 36);
+            // 4. Red Highlight Area: Use 4.png
+            const redBoxW = 165;
+            const redBoxH = 165;
+            const redBoxX = 585;
+            const redBoxY = 505;
 
             ctx.save();
-            drawRoundedRect(sqX, sqY, sqSize, sqSize, 24);
-            ctx.fillStyle = theme.squareFrameBg;
+            drawRoundedRect(redBoxX, redBoxY, redBoxW, redBoxH, 22);
+            ctx.fillStyle = theme.redHighlightBg;
             ctx.fill();
             ctx.lineWidth = 7;
-            ctx.strokeStyle = theme.squareFrameBorder;
+            ctx.strokeStyle = theme.redHighlightBorder;
             ctx.stroke();
 
-            drawRoundedRect(sqX + 6, sqY + 6, sqSize - 12, sqSize - 12, 20);
-            ctx.clip();
-
-            if (isGampaLoaded && gampaImg.width > 0 && gampaImg.height > 0) {
-                const pad = 22;
-                const avail = sqSize - pad * 2;
-                const bScale = Math.min(avail / gampaImg.width, avail / gampaImg.height);
-                const bW = gampaImg.width * bScale;
-                const bH = gampaImg.height * bScale;
-                ctx.drawImage(gampaImg, sqX + (sqSize - bW) / 2, sqY + (sqSize - bH) / 2, bW, bH);
+            if (isFourLoaded && fourImg.width > 0 && fourImg.height > 0) {
+                const pad = 20;
+                const avail = redBoxW - pad * 2;
+                const scale4 = Math.min(avail / fourImg.width, avail / fourImg.height);
+                const w4 = fourImg.width * scale4;
+                const h4 = fourImg.height * scale4;
+                ctx.drawImage(
+                    fourImg,
+                    redBoxX + (redBoxW - w4) / 2,
+                    redBoxY + (redBoxH - h4) / 2,
+                    w4,
+                    h4
+                );
             } else {
-                drawWovenGampaIllustration(ctx, sqX + sqSize / 2, sqY + sqSize / 2 - 4, sqSize * 0.72, theme.squareFrameBorder, theme.accent);
-                ctx.fillStyle = theme.primary;
-                ctx.font = 'bold 20px Ramabhadra, sans-serif';
+                ctx.fillStyle = theme.redHighlightBorder;
+                ctx.font = 'bold 72px Poppins, sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                ctx.fillText('గంప గుర్తు', sqX + sqSize / 2, sqY + sqSize - 32);
+                ctx.fillText('4', redBoxX + redBoxW / 2, redBoxY + redBoxH / 2);
             }
             ctx.restore();
 
-            // Label tag under the square gampa frame
-            ctx.save();
-            ctx.fillStyle = theme.primary;
-            ctx.font = 'bold 22px Ramabhadra, sans-serif';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'top';
-            ctx.fillText('గుర్తు: గంప', sqX + sqSize / 2, sqY + sqSize + 8);
-            ctx.restore();
-
-            // 6. Center Lower: Red Badge for Ballot Box
-            const ballotBadgeW = 148;
-            const ballotBadgeH = 148;
-            const ballotBadgeX = Math.round(leftPanelW - ballotBadgeW * 0.35);
-            const ballotBadgeY = Math.round(upperHeight - ballotBadgeH - 22);
+            // 5. Pink Highlight Area: Use ballot.png
+            const pinkBoxW = 185;
+            const pinkBoxH = 165;
+            const pinkBoxX = 795;
+            const pinkBoxY = 505;
 
             ctx.save();
-            drawRoundedRect(ballotBadgeX, ballotBadgeY, ballotBadgeW, ballotBadgeH, 28);
-            ctx.fillStyle = theme.ballotRed;
+            drawRoundedRect(pinkBoxX, pinkBoxY, pinkBoxW, pinkBoxH, 22);
+            ctx.fillStyle = theme.pinkHighlightBg;
             ctx.fill();
-            ctx.lineWidth = 6;
-            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 7;
+            ctx.strokeStyle = theme.pinkHighlightBorder;
             ctx.stroke();
 
             if (isBallotLoaded && ballotImg.width > 0 && ballotImg.height > 0) {
-                const bPad = 24;
-                const bAvail = ballotBadgeW - bPad * 2;
-                const scaleB = Math.min(bAvail / ballotImg.width, bAvail / ballotImg.height);
+                const pad = 18;
+                const availW = pinkBoxW - pad * 2;
+                const availH = pinkBoxH - pad * 2 - 22;
+                const scaleB = Math.min(availW / ballotImg.width, availH / ballotImg.height);
                 const wB = ballotImg.width * scaleB;
                 const hB = ballotImg.height * scaleB;
                 ctx.drawImage(
                     ballotImg,
-                    ballotBadgeX + (ballotBadgeW - wB) / 2,
-                    ballotBadgeY + (ballotBadgeH - hB) / 2 - 8,
+                    pinkBoxX + (pinkBoxW - wB) / 2,
+                    pinkBoxY + 14 + (availH - hB) / 2,
                     wB,
                     hB
                 );
             } else {
-                drawRoundedRect(ballotBadgeX + 36, ballotBadgeY + 34, 76, 54, 8);
-                ctx.fillStyle = '#ffffff';
-                ctx.fill();
-                ctx.fillStyle = theme.ballotRed;
-                ctx.fillRect(ballotBadgeX + 52, ballotBadgeY + 50, 44, 8);
+                ctx.fillStyle = theme.pinkHighlightBorder;
+                ctx.font = 'bold 24px Ramabhadra, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('బ్యాలెట్', pinkBoxX + pinkBoxW / 2, pinkBoxY + pinkBoxH / 2 - 10);
             }
 
-            ctx.fillStyle = '#ffffff';
+            ctx.fillStyle = '#831843';
             ctx.font = 'bold 20px Ramabhadra, sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
-            ctx.fillText('బ్యాలెట్ బాక్స్', ballotBadgeX + ballotBadgeW / 2, ballotBadgeY + ballotBadgeH - 10);
+            ctx.fillText('బ్యాలెట్ బాక్స్', pinkBoxX + pinkBoxW / 2, pinkBoxY + pinkBoxH - 8);
             ctx.restore();
 
-            // 7. Bottom Campaign Banner Section
+            // 6. Bottom Two Partitions Section (Left: Supporter Details, Right: Yellow Highlight with Gampa)
             ctx.save();
-            const botGrad = ctx.createLinearGradient(0, upperHeight, w, h);
-            botGrad.addColorStop(0, theme.primary);
-            botGrad.addColorStop(1, theme.secondary);
-            ctx.fillStyle = botGrad;
-            ctx.fillRect(0, upperHeight, w, bottomHeight);
+            const splitX = Math.round(w * 0.62);
+            const leftPartW = splitX;
+            const rightPartW = w - splitX;
 
-            // Accent divider line
+            // Left Partition Background
+            const leftBotGrad = ctx.createLinearGradient(0, upperHeight, splitX, h);
+            leftBotGrad.addColorStop(0, theme.primary);
+            leftBotGrad.addColorStop(1, theme.secondary);
+            ctx.fillStyle = leftBotGrad;
+            ctx.fillRect(0, upperHeight, leftPartW, bottomHeight);
+
+            // Right Partition Background (Yellow Highlight Area for Gampa)
+            ctx.fillStyle = theme.yellowHighlightBg;
+            ctx.fillRect(splitX, upperHeight, rightPartW, bottomHeight);
+
+            // Top & Center Divider Lines
             ctx.fillStyle = theme.accent;
             ctx.fillRect(0, upperHeight, w, 8);
 
-            // Main headline
+            ctx.fillStyle = theme.yellowHighlightBorder;
+            ctx.fillRect(splitX - 4, upperHeight, 8, bottomHeight);
+
+            // Left Partition Content: Candidate Slogan & Supporter Info
             ctx.fillStyle = '#ffffff';
-            ctx.font = 'bold 42px Ramabhadra, sans-serif';
-            ctx.textAlign = 'center';
+            ctx.font = 'bold 36px Ramabhadra, sans-serif';
+            ctx.textAlign = 'left';
             ctx.textBaseline = 'middle';
-            ctx.fillText('స్వతంత్ర అభ్యర్థి - సాయి ప్రసాద్', w / 2, upperHeight + 56);
+            ctx.fillText('స్వతంత్ర అభ్యర్థి - సాయి ప్రసాద్', 36, upperHeight + 48);
 
-            // Call to action
             ctx.fillStyle = theme.accent;
-            ctx.font = 'bold 34px Ramabhadra, sans-serif';
-            ctx.fillText('గంప గుర్తుకు ఓటు వేసి గెలిపించండి!', w / 2, upperHeight + 108);
-
-            // Supporter box
-            const boxX = 64;
-            const boxY = upperHeight + 144;
-            const boxW = w - 128;
-            const boxH = bottomHeight - 168;
-
-            drawRoundedRect(boxX, boxY, boxW, boxH, 18);
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.14)';
-            ctx.fill();
+            ctx.font = 'bold 28px Ramabhadra, sans-serif';
+            ctx.fillText('గంప గుర్తుకు ఓటు వేసి గెలిపించండి!', 36, upperHeight + 92);
 
             const supName = (supporterNameInput.value || '').trim() || 'మద్దతుదారు పేరు';
             const supLoc = (supporterLocationInput.value || '').trim() || 'మోదా గ్రామం';
 
+            drawRoundedRect(36, upperHeight + 128, leftPartW - 72, bottomHeight - 154, 16);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
+            ctx.fill();
+
             ctx.fillStyle = '#ffffff';
-            ctx.font = 'bold 32px Ramabhadra, sans-serif';
-            ctx.textAlign = 'left';
-            ctx.fillText(`మద్దతుదారులు: ${supName}`, boxX + 28, boxY + 34);
+            ctx.font = 'bold 28px Ramabhadra, sans-serif';
+            ctx.fillText(`మద్దతుదారులు: ${supName}`, 56, upperHeight + 162);
 
             ctx.fillStyle = '#e2e8f0';
-            ctx.font = '26px Ramabhadra, sans-serif';
-            ctx.fillText(`గ్రామం / వార్డు: ${supLoc}`, boxX + 28, boxY + 74);
+            ctx.font = '24px Ramabhadra, sans-serif';
+            ctx.fillText(`గ్రామం / వార్డు: ${supLoc}`, 56, upperHeight + 202);
+
+            // Right Partition Content (Yellow Highlight): Gampa Symbol Highlighted
+            const gampaBoxPad = 24;
+            const gampaBoxX = splitX + gampaBoxPad;
+            const gampaBoxY = upperHeight + 22;
+            const gampaBoxW = rightPartW - gampaBoxPad * 2;
+            const gampaBoxH = bottomHeight - 40;
+
+            drawRoundedRect(gampaBoxX, gampaBoxY, gampaBoxW, gampaBoxH, 22);
+            ctx.fillStyle = '#fef9c3';
+            ctx.fill();
+            ctx.lineWidth = 6;
+            ctx.strokeStyle = theme.yellowHighlightBorder;
+            ctx.stroke();
+
+            if (isGampaLoaded && gampaImg.width > 0 && gampaImg.height > 0) {
+                const imgAreaH = gampaBoxH - 54;
+                const imgAreaW = gampaBoxW - 32;
+                const gScale = Math.min(imgAreaW / gampaImg.width, imgAreaH / gampaImg.height);
+                const gW = gampaImg.width * gScale;
+                const gH = gampaImg.height * gScale;
+                ctx.drawImage(
+                    gampaImg,
+                    gampaBoxX + (gampaBoxW - gW) / 2,
+                    gampaBoxY + 12 + (imgAreaH - gH) / 2,
+                    gW,
+                    gH
+                );
+            } else {
+                drawWovenGampaIllustration(
+                    ctx,
+                    gampaBoxX + gampaBoxW / 2,
+                    gampaBoxY + gampaBoxH / 2 - 14,
+                    Math.min(gampaBoxW, gampaBoxH) * 0.65,
+                    '#854d0e',
+                    '#eab308'
+                );
+            }
+
+            ctx.fillStyle = '#713f12';
+            ctx.font = 'bold 26px Ramabhadra, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'bottom';
+            ctx.fillText('గుర్తు: గంప', gampaBoxX + gampaBoxW / 2, gampaBoxY + gampaBoxH - 8);
 
             ctx.restore();
         }
