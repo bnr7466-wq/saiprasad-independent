@@ -385,7 +385,7 @@
 
         let supporterBox = {
             x: 585,
-            y: 55,
+            y: 36,
             size: 420
         };
 
@@ -705,7 +705,7 @@
         function drawCanvas() {
             const w = canvas.width;
             const h = canvas.height;
-            const upperHeight = Math.round(h * 0.70);
+            const upperHeight = Math.round(h * 0.72);
             const bottomHeight = h - upperHeight;
             const themeKey = themeSelect.value || 'green';
             const theme = THEMES[themeKey] || THEMES.green;
@@ -765,8 +765,8 @@
             // 3. Light Green Highlight Square Box for Supporter Photo
             supporterBox = {
                 x: 585,
-                y: 55,
-                size: 420
+                y: 34,
+                size: 416
             };
 
             ctx.save();
@@ -817,11 +817,11 @@
             }
             ctx.restore();
 
-            // 4. Yellow Highlight Area (Moved from bottom): 4.png + ballot.png
+            // 4. Yellow Highlight Area Moved Down: 4.png + ballot.png
             const yellowGroupX = 568;
-            const yellowGroupY = 502;
+            const yellowGroupY = 566;
             const yellowGroupW = 454;
-            const yellowGroupH = 186;
+            const yellowGroupH = 192;
 
             ctx.save();
             drawRoundedRect(yellowGroupX, yellowGroupY, yellowGroupW, yellowGroupH, 24);
@@ -833,9 +833,9 @@
 
             // 4.png card inside Yellow Highlight
             const fourCardW = 185;
-            const fourCardH = 158;
+            const fourCardH = 162;
             const fourCardX = yellowGroupX + 18;
-            const fourCardY = yellowGroupY + 14;
+            const fourCardY = yellowGroupY + 15;
 
             drawRoundedRect(fourCardX, fourCardY, fourCardW, fourCardH, 18);
             ctx.fillStyle = '#ffffff';
@@ -867,9 +867,9 @@
 
             // ballot.png card inside Yellow Highlight
             const ballotCardW = 212;
-            const ballotCardH = 158;
+            const ballotCardH = 162;
             const ballotCardX = yellowGroupX + 224;
-            const ballotCardY = yellowGroupY + 14;
+            const ballotCardY = yellowGroupY + 15;
 
             drawRoundedRect(ballotCardX, ballotCardY, ballotCardW, ballotCardH, 18);
             ctx.fillStyle = '#ffffff';
@@ -881,14 +881,14 @@
             if (isBallotLoaded && ballotImg.width > 0 && ballotImg.height > 0) {
                 const padB = 14;
                 const availBW = ballotCardW - padB * 2;
-                const availBH = ballotCardH - padB * 2 - 26;
+                const availBH = ballotCardH - padB * 2 - 24;
                 const scaleB = Math.min(availBW / ballotImg.width, availBH / ballotImg.height);
                 const wB = ballotImg.width * scaleB;
                 const hB = ballotImg.height * scaleB;
                 ctx.drawImage(
                     ballotImg,
                     ballotCardX + (ballotCardW - wB) / 2,
-                    ballotCardY + 10 + (availBH - hB) / 2,
+                    ballotCardY + 8 + (availBH - hB) / 2,
                     wB,
                     hB
                 );
@@ -904,10 +904,10 @@
             ctx.font = 'bold 20px Ramabhadra, sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
-            ctx.fillText('బ్యాలెట్ బాక్స్', ballotCardX + ballotCardW / 2, ballotCardY + ballotCardH - 8);
+            ctx.fillText('బ్యాలెట్ బాక్స్', ballotCardX + ballotCardW / 2, ballotCardY + ballotCardH - 6);
             ctx.restore();
 
-            // 5. Bottom Two Partitions Section (Left: Supporter Details, Right: Pink Highlight with larger Gampa)
+            // 5. Bottom Two Partitions Section (Left: Supporter Details, Right: Pink Highlight with larger Gampa moved up)
             ctx.save();
             const splitX = Math.round(w * 0.60);
             const leftPartW = splitX;
@@ -957,12 +957,12 @@
             ctx.font = '24px Ramabhadra, sans-serif';
             ctx.fillText(`గ్రామం / వార్డు: ${supLoc}`, 56, upperHeight + 202);
 
-            // Right Partition Content (Pink Highlight): Slightly Larger Gampa Symbol
-            const gampaBoxPad = 14;
+            // Right Partition Content (Pink Highlight): Larger Gampa Symbol Shifted Up
+            const gampaBoxPad = 10;
             const gampaBoxX = splitX + gampaBoxPad;
-            const gampaBoxY = upperHeight + 16;
+            const gampaBoxY = upperHeight + 2;
             const gampaBoxW = rightPartW - gampaBoxPad * 2;
-            const gampaBoxH = bottomHeight - 28;
+            const gampaBoxH = bottomHeight - 12;
 
             drawRoundedRect(gampaBoxX, gampaBoxY, gampaBoxW, gampaBoxH, 22);
             ctx.fillStyle = '#fdf2f8';
@@ -972,15 +972,15 @@
             ctx.stroke();
 
             if (isGampaLoaded && gampaImg.width > 0 && gampaImg.height > 0) {
-                const imgAreaH = gampaBoxH - 42;
-                const imgAreaW = gampaBoxW - 14;
-                const gScale = Math.min(imgAreaW / gampaImg.width, imgAreaH / gampaImg.height) * 1.15;
+                const imgAreaH = gampaBoxH - 34;
+                const imgAreaW = gampaBoxW - 8;
+                const gScale = Math.min(imgAreaW / gampaImg.width, imgAreaH / gampaImg.height) * 1.25;
                 const gW = Math.min(gampaImg.width * gScale, imgAreaW);
                 const gH = Math.min(gampaImg.height * gScale, imgAreaH);
                 ctx.drawImage(
                     gampaImg,
                     gampaBoxX + (gampaBoxW - gW) / 2,
-                    gampaBoxY + 6 + (imgAreaH - gH) / 2,
+                    gampaBoxY + 2 + (imgAreaH - gH) / 2,
                     gW,
                     gH
                 );
@@ -988,8 +988,8 @@
                 drawWovenGampaIllustration(
                     ctx,
                     gampaBoxX + gampaBoxW / 2,
-                    gampaBoxY + gampaBoxH / 2 - 12,
-                    Math.min(gampaBoxW, gampaBoxH) * 0.76,
+                    gampaBoxY + gampaBoxH / 2 - 14,
+                    Math.min(gampaBoxW, gampaBoxH) * 0.8,
                     '#9d174d',
                     '#ec4899'
                 );
@@ -999,7 +999,7 @@
             ctx.font = 'bold 26px Ramabhadra, sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
-            ctx.fillText('గుర్తు: గంప', gampaBoxX + gampaBoxW / 2, gampaBoxY + gampaBoxH - 6);
+            ctx.fillText('గుర్తు: గంప', gampaBoxX + gampaBoxW / 2, gampaBoxY + gampaBoxH - 4);
 
             ctx.restore();
         }
