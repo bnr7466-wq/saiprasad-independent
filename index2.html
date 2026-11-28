@@ -383,11 +383,10 @@
             flipH: false
         };
 
-        // Light Green Highlight Square Box geometry for supporter photo
         let supporterBox = {
-            x: 615,
-            y: 75,
-            size: 360
+            x: 585,
+            y: 55,
+            size: 420
         };
 
         let isDragging = false;
@@ -401,12 +400,10 @@
                 accent: '#fbc02d',
                 lightGreenBg: '#dcfce7',
                 lightGreenBorder: '#22c55e',
-                yellowHighlightBg: '#fef08a',
-                yellowHighlightBorder: '#eab308',
-                redHighlightBg: '#fee2e2',
-                redHighlightBorder: '#ef4444',
-                pinkHighlightBg: '#fce7f3',
-                pinkHighlightBorder: '#ec4899'
+                yellowBg: '#fef08a',
+                yellowBorder: '#eab308',
+                pinkBg: '#fce7f3',
+                pinkBorder: '#ec4899'
             },
             saffron: {
                 primary: '#e65100',
@@ -414,12 +411,10 @@
                 accent: '#ffd600',
                 lightGreenBg: '#dcfce7',
                 lightGreenBorder: '#16a34a',
-                yellowHighlightBg: '#fef08a',
-                yellowHighlightBorder: '#ca8a04',
-                redHighlightBg: '#fee2e2',
-                redHighlightBorder: '#dc2626',
-                pinkHighlightBg: '#fce7f3',
-                pinkHighlightBorder: '#db2777'
+                yellowBg: '#fef08a',
+                yellowBorder: '#ca8a04',
+                pinkBg: '#fce7f3',
+                pinkBorder: '#db2777'
             },
             emerald: {
                 primary: '#004d40',
@@ -427,12 +422,10 @@
                 accent: '#ffb300',
                 lightGreenBg: '#dcfce7',
                 lightGreenBorder: '#10b981',
-                yellowHighlightBg: '#fef08a',
-                yellowHighlightBorder: '#d97706',
-                redHighlightBg: '#fee2e2',
-                redHighlightBorder: '#e11d48',
-                pinkHighlightBg: '#fce7f3',
-                pinkHighlightBorder: '#ec4899'
+                yellowBg: '#fef08a',
+                yellowBorder: '#d97706',
+                pinkBg: '#fce7f3',
+                pinkBorder: '#ec4899'
             }
         };
 
@@ -769,7 +762,7 @@
             ctx.fillText('సాయి ప్రసాద్', leftPanelW / 2, upperHeight - 36);
             ctx.restore();
 
-            // 3. Light Green Highlight Square Box for Supporter Photo (Square instead of Circle)
+            // 3. Light Green Highlight Square Box for Supporter Photo
             supporterBox = {
                 x: 585,
                 y: 55,
@@ -824,88 +817,99 @@
             }
             ctx.restore();
 
-            // 4. Red Highlight Area: Use 4.png
-            const redBoxW = 165;
-            const redBoxH = 165;
-            const redBoxX = 585;
-            const redBoxY = 505;
+            // 4. Yellow Highlight Area (Moved from bottom): 4.png + ballot.png
+            const yellowGroupX = 568;
+            const yellowGroupY = 502;
+            const yellowGroupW = 454;
+            const yellowGroupH = 186;
 
             ctx.save();
-            drawRoundedRect(redBoxX, redBoxY, redBoxW, redBoxH, 22);
-            ctx.fillStyle = theme.redHighlightBg;
+            drawRoundedRect(yellowGroupX, yellowGroupY, yellowGroupW, yellowGroupH, 24);
+            ctx.fillStyle = theme.yellowBg;
             ctx.fill();
             ctx.lineWidth = 7;
-            ctx.strokeStyle = theme.redHighlightBorder;
+            ctx.strokeStyle = theme.yellowBorder;
+            ctx.stroke();
+
+            // 4.png card inside Yellow Highlight
+            const fourCardW = 185;
+            const fourCardH = 158;
+            const fourCardX = yellowGroupX + 18;
+            const fourCardY = yellowGroupY + 14;
+
+            drawRoundedRect(fourCardX, fourCardY, fourCardW, fourCardH, 18);
+            ctx.fillStyle = '#ffffff';
+            ctx.fill();
+            ctx.lineWidth = 4;
+            ctx.strokeStyle = theme.yellowBorder;
             ctx.stroke();
 
             if (isFourLoaded && fourImg.width > 0 && fourImg.height > 0) {
-                const pad = 20;
-                const avail = redBoxW - pad * 2;
-                const scale4 = Math.min(avail / fourImg.width, avail / fourImg.height);
+                const pad4 = 16;
+                const avail4 = Math.min(fourCardW - pad4 * 2, fourCardH - pad4 * 2);
+                const scale4 = Math.min(avail4 / fourImg.width, avail4 / fourImg.height);
                 const w4 = fourImg.width * scale4;
                 const h4 = fourImg.height * scale4;
                 ctx.drawImage(
                     fourImg,
-                    redBoxX + (redBoxW - w4) / 2,
-                    redBoxY + (redBoxH - h4) / 2,
+                    fourCardX + (fourCardW - w4) / 2,
+                    fourCardY + (fourCardH - h4) / 2,
                     w4,
                     h4
                 );
             } else {
-                ctx.fillStyle = theme.redHighlightBorder;
-                ctx.font = 'bold 72px Poppins, sans-serif';
+                ctx.fillStyle = '#713f12';
+                ctx.font = 'bold 64px Poppins, sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                ctx.fillText('4', redBoxX + redBoxW / 2, redBoxY + redBoxH / 2);
+                ctx.fillText('4', fourCardX + fourCardW / 2, fourCardY + fourCardH / 2);
             }
-            ctx.restore();
 
-            // 5. Pink Highlight Area: Use ballot.png
-            const pinkBoxW = 185;
-            const pinkBoxH = 165;
-            const pinkBoxX = 795;
-            const pinkBoxY = 505;
+            // ballot.png card inside Yellow Highlight
+            const ballotCardW = 212;
+            const ballotCardH = 158;
+            const ballotCardX = yellowGroupX + 224;
+            const ballotCardY = yellowGroupY + 14;
 
-            ctx.save();
-            drawRoundedRect(pinkBoxX, pinkBoxY, pinkBoxW, pinkBoxH, 22);
-            ctx.fillStyle = theme.pinkHighlightBg;
+            drawRoundedRect(ballotCardX, ballotCardY, ballotCardW, ballotCardH, 18);
+            ctx.fillStyle = '#ffffff';
             ctx.fill();
-            ctx.lineWidth = 7;
-            ctx.strokeStyle = theme.pinkHighlightBorder;
+            ctx.lineWidth = 4;
+            ctx.strokeStyle = theme.yellowBorder;
             ctx.stroke();
 
             if (isBallotLoaded && ballotImg.width > 0 && ballotImg.height > 0) {
-                const pad = 18;
-                const availW = pinkBoxW - pad * 2;
-                const availH = pinkBoxH - pad * 2 - 22;
-                const scaleB = Math.min(availW / ballotImg.width, availH / ballotImg.height);
+                const padB = 14;
+                const availBW = ballotCardW - padB * 2;
+                const availBH = ballotCardH - padB * 2 - 26;
+                const scaleB = Math.min(availBW / ballotImg.width, availBH / ballotImg.height);
                 const wB = ballotImg.width * scaleB;
                 const hB = ballotImg.height * scaleB;
                 ctx.drawImage(
                     ballotImg,
-                    pinkBoxX + (pinkBoxW - wB) / 2,
-                    pinkBoxY + 14 + (availH - hB) / 2,
+                    ballotCardX + (ballotCardW - wB) / 2,
+                    ballotCardY + 10 + (availBH - hB) / 2,
                     wB,
                     hB
                 );
             } else {
-                ctx.fillStyle = theme.pinkHighlightBorder;
+                ctx.fillStyle = '#713f12';
                 ctx.font = 'bold 24px Ramabhadra, sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                ctx.fillText('బ్యాలెట్', pinkBoxX + pinkBoxW / 2, pinkBoxY + pinkBoxH / 2 - 10);
+                ctx.fillText('బ్యాలెట్', ballotCardX + ballotCardW / 2, ballotCardY + ballotCardH / 2 - 10);
             }
 
-            ctx.fillStyle = '#831843';
+            ctx.fillStyle = '#713f12';
             ctx.font = 'bold 20px Ramabhadra, sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
-            ctx.fillText('బ్యాలెట్ బాక్స్', pinkBoxX + pinkBoxW / 2, pinkBoxY + pinkBoxH - 8);
+            ctx.fillText('బ్యాలెట్ బాక్స్', ballotCardX + ballotCardW / 2, ballotCardY + ballotCardH - 8);
             ctx.restore();
 
-            // 6. Bottom Two Partitions Section (Left: Supporter Details, Right: Yellow Highlight with Gampa)
+            // 5. Bottom Two Partitions Section (Left: Supporter Details, Right: Pink Highlight with larger Gampa)
             ctx.save();
-            const splitX = Math.round(w * 0.62);
+            const splitX = Math.round(w * 0.60);
             const leftPartW = splitX;
             const rightPartW = w - splitX;
 
@@ -916,15 +920,15 @@
             ctx.fillStyle = leftBotGrad;
             ctx.fillRect(0, upperHeight, leftPartW, bottomHeight);
 
-            // Right Partition Background (Yellow Highlight Area for Gampa)
-            ctx.fillStyle = theme.yellowHighlightBg;
+            // Right Partition Background (Pink Highlight Area)
+            ctx.fillStyle = theme.pinkBg;
             ctx.fillRect(splitX, upperHeight, rightPartW, bottomHeight);
 
             // Top & Center Divider Lines
             ctx.fillStyle = theme.accent;
             ctx.fillRect(0, upperHeight, w, 8);
 
-            ctx.fillStyle = theme.yellowHighlightBorder;
+            ctx.fillStyle = theme.pinkBorder;
             ctx.fillRect(splitX - 4, upperHeight, 8, bottomHeight);
 
             // Left Partition Content: Candidate Slogan & Supporter Info
@@ -938,7 +942,7 @@
             ctx.font = 'bold 28px Ramabhadra, sans-serif';
             ctx.fillText('గంప గుర్తుకు ఓటు వేసి గెలిపించండి!', 36, upperHeight + 92);
 
-            const supName = (supporterNameInput.value || '').trim() || 'మద్దతుదారు పేరు';
+            const supName = (supporterNameInput.value || '').trim() || 'మీ పేరు నమోదు';
             const supLoc = (supporterLocationInput.value || '').trim() || 'మోదా గ్రామం';
 
             drawRoundedRect(36, upperHeight + 128, leftPartW - 72, bottomHeight - 154, 16);
@@ -953,30 +957,30 @@
             ctx.font = '24px Ramabhadra, sans-serif';
             ctx.fillText(`గ్రామం / వార్డు: ${supLoc}`, 56, upperHeight + 202);
 
-            // Right Partition Content (Yellow Highlight): Gampa Symbol Highlighted
-            const gampaBoxPad = 24;
+            // Right Partition Content (Pink Highlight): Slightly Larger Gampa Symbol
+            const gampaBoxPad = 14;
             const gampaBoxX = splitX + gampaBoxPad;
-            const gampaBoxY = upperHeight + 22;
+            const gampaBoxY = upperHeight + 16;
             const gampaBoxW = rightPartW - gampaBoxPad * 2;
-            const gampaBoxH = bottomHeight - 40;
+            const gampaBoxH = bottomHeight - 28;
 
             drawRoundedRect(gampaBoxX, gampaBoxY, gampaBoxW, gampaBoxH, 22);
-            ctx.fillStyle = '#fef9c3';
+            ctx.fillStyle = '#fdf2f8';
             ctx.fill();
             ctx.lineWidth = 6;
-            ctx.strokeStyle = theme.yellowHighlightBorder;
+            ctx.strokeStyle = theme.pinkBorder;
             ctx.stroke();
 
             if (isGampaLoaded && gampaImg.width > 0 && gampaImg.height > 0) {
-                const imgAreaH = gampaBoxH - 54;
-                const imgAreaW = gampaBoxW - 32;
-                const gScale = Math.min(imgAreaW / gampaImg.width, imgAreaH / gampaImg.height);
-                const gW = gampaImg.width * gScale;
-                const gH = gampaImg.height * gScale;
+                const imgAreaH = gampaBoxH - 42;
+                const imgAreaW = gampaBoxW - 14;
+                const gScale = Math.min(imgAreaW / gampaImg.width, imgAreaH / gampaImg.height) * 1.15;
+                const gW = Math.min(gampaImg.width * gScale, imgAreaW);
+                const gH = Math.min(gampaImg.height * gScale, imgAreaH);
                 ctx.drawImage(
                     gampaImg,
                     gampaBoxX + (gampaBoxW - gW) / 2,
-                    gampaBoxY + 12 + (imgAreaH - gH) / 2,
+                    gampaBoxY + 6 + (imgAreaH - gH) / 2,
                     gW,
                     gH
                 );
@@ -984,18 +988,18 @@
                 drawWovenGampaIllustration(
                     ctx,
                     gampaBoxX + gampaBoxW / 2,
-                    gampaBoxY + gampaBoxH / 2 - 14,
-                    Math.min(gampaBoxW, gampaBoxH) * 0.65,
-                    '#854d0e',
-                    '#eab308'
+                    gampaBoxY + gampaBoxH / 2 - 12,
+                    Math.min(gampaBoxW, gampaBoxH) * 0.76,
+                    '#9d174d',
+                    '#ec4899'
                 );
             }
 
-            ctx.fillStyle = '#713f12';
+            ctx.fillStyle = '#831843';
             ctx.font = 'bold 26px Ramabhadra, sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
-            ctx.fillText('గుర్తు: గంప', gampaBoxX + gampaBoxW / 2, gampaBoxY + gampaBoxH - 8);
+            ctx.fillText('గుర్తు: గంప', gampaBoxX + gampaBoxW / 2, gampaBoxY + gampaBoxH - 6);
 
             ctx.restore();
         }
