@@ -337,7 +337,7 @@
     <!-- Canvas Logic JavaScript -->
     <script>
         const ASSETS = {
-            leader: './leader.jpg',
+            leader: './leader1.png',
             gampa: './gampa.png',
             fourImg: './4.png',
             ballot: './ballot.png'
@@ -678,10 +678,46 @@
             });
 
             document.getElementById('shareWhatsapp').addEventListener('click', () => {
+                drawCanvas();
                 const name = supporterNameInput.value.trim() || 'మద్దతుదారు';
                 const loc = supporterLocationInput.value.trim() || 'మోదా గ్రామం';
-                const text = `స్వతంత్ర అభ్యర్థి సాయి ప్రసాద్ గారికి (గుర్తు: గంప) ఓటు వేసి గెలిపించండి! - ${name} (${loc})`;
-                window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+                const shareText = `స్వతంత్ర అభ్యర్థి సాయి ప్రసాద్ గారికి (గుర్తు: గంప) ఓటు వేసి గెలిపించండి! - ${name} (${loc})\n${window.location.href}`;
+
+                canvas.toBlob(async (blob) => {
+                    if (!blob) {
+                        window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, '_blank', 'noopener,noreferrer');
+                        return;
+                    }
+
+                    const file = new File([blob], 'sai-prasad-gampa-banner.png', { type: 'image/png' });
+
+                    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                        try {
+                            await navigator.share({
+                                files: [file],
+                                text: shareText
+                            });
+                            return;
+                        } catch (err) {
+                            if (err && err.name === 'AbortError') {
+                                return;
+                            }
+                        }
+                    }
+
+                    // Fallback for desktop/browsers without file-share support: download image + open WhatsApp text link
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.download = 'sai-prasad-gampa-banner.png';
+                    link.href = url;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    setTimeout(() => URL.revokeObjectURL(url), 4000);
+
+                    showToast('బ్యానర్ డౌన్‌లోడ్ అయింది. WhatsApp లో ఫోటోని అటాచ్ చేసి పంపండి.', 'info');
+                    window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, '_blank', 'noopener,noreferrer');
+                }, 'image/png');
             });
 
             document.getElementById('shareInstagram').addEventListener('click', () => {
